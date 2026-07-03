@@ -9,156 +9,395 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
   <style>
 
-body {
-  background: linear-gradient(
-    to bottom,
-    #111111 0%,
-    #0a0a0a 40%,
-    #000000 100%
-  );
-  color: #f5f5f5;
-  font-family: 'Segoe UI', sans-serif;
-  min-height: 100vh;
+/* ==========================================================
+   ESTILOS GENERALES
+========================================================== */
+
+body{
+    background: linear-gradient(
+        to bottom,
+        #111111 0%,
+        #0a0a0a 40%,
+        #000000 100%
+    );
+    color:#f5f5f5;
+    font-family:'Segoe UI',sans-serif;
+    min-height:100vh;
 }
 
-/* NAVBAR */
-.navbar {
-  background-color: #111111 !important;
-  border-bottom: 1px solid #d4af37;
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+    background:#111111 !important;
+    border-bottom:1px solid #d4af37;
 }
 
 .navbar-brand{
-    color: #d4af37 !important;
-    font-family: 'Cinzel', serif;
-    font-size: 1.7rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    color:#d4af37 !important;
+    font-family:'Cinzel',serif;
+    font-size:1.7rem;
+    font-weight:700;
+    letter-spacing:2px;
 }
 
 .nav-link{
-    color: white !important;
-    transition: 0.3s;
+    color:white !important;
+    position:relative;
+    margin-left:12px;
+    transition:.30s;
 }
 
 .nav-link:hover{
-    color: #d4af37 !important;
+    color:#d4af37 !important;
 }
 
-/* LOGO */
+/* Línea inferior animada */
+
+.nav-link::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-6px;
+
+    width:0;
+    height:2px;
+
+    background:#d4af37;
+
+    transform:translateX(-50%);
+    transition:width .35s ease;
+}
+
+.nav-link:hover::after{
+    width:100%;
+}
+
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
 .navbar-brand img{
-    border-radius: 50%;
-    border: 2px solid #d4af37;
-    box-shadow: 0 0 15px rgba(212,175,55,0.5);
+    border-radius:50%;
+    border:2px solid #d4af37;
+    box-shadow:0 0 15px rgba(212,175,55,.5);
+    transition:all .35s ease;
 }
 
-/* CONTENEDOR */
+.navbar-brand:hover img{
+    transform:scale(1.08);
+    box-shadow:0 0 25px rgba(212,175,55,.85);
+}
+
+
+/* ==========================================================
+   CONTENEDOR
+========================================================== */
+
 .container{
-    margin-top: 40px;
+    margin-top:40px;
 }
 
-/* TITULO */
-h2, h3{
-    color: #d4af37;
-    font-weight: bold;
-    margin-bottom: 25px;
+/* ==========================================================
+   TÍTULO PRINCIPAL
+========================================================== */
+
+.titulo-principal{
+    color:#d4af37 !important;
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    letter-spacing:1px;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,.20);
 }
 
-/* TABLA */
+/* ==========================================================
+   TÍTULOS
+========================================================== */
+
+.titulo-seccion{
+    color:#d4af37;
+    font-size:1.5rem;
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    letter-spacing:.6px;
+    transition:.35s ease;
+}
+
+
+/* ==========================================================
+   TABLA PREMIUM
+========================================================== */
+
+/* Contenedor */
+
+.tabla-premium{
+    border-radius:18px;
+    overflow:hidden;
+    background:transparent;
+    box-shadow:none;
+}
+
+/* Tabla */
+
 .table{
-    background-color: #1a1a1a;
-    color: white;
-    border-radius: 15px;
-    overflow: hidden;
+    margin-bottom:0;
+    border-radius:18px;
+    overflow:hidden;
+    background:#ffffff;
 }
 
-.table thead{
-    background-color: #d4af37;
-    color: black;
+/* Encabezado */
+
+.table thead th{
+    background:linear-gradient(
+        90deg,
+        #b8860b,
+        #d4af37,
+        #f3d46b
+    );
+
+    color:#111;
+    font-weight:700;
+    border:none;
+    padding:16px;
 }
+
+/* Filas */
 
 .table tbody tr{
-    transition: 0.3s;
+    transition:all .35s ease;
 }
 
-.table tbody tr:hover{
-    background-color: #2b2b2b;
+/* Celdas */
+
+.table tbody td{
+    padding:16px;
+    vertical-align:middle;
+    border-color:#ececec;
 }
 
-/* BOTONES */
+/* Hover */
+
+.table-hover tbody tr:hover{
+    background:#fff9ea !important;
+    transform:scale(1.005);
+    box-shadow:inset 5px 0 0 #d4af37;
+    cursor:pointer;
+}
+
+
+/* ==========================================================
+   BOTONES DE ACCIONES
+========================================================== */
+
+.table .btn{
+    margin:0 3px;
+    border-radius:8px;
+    transition:all .30s ease;
+}
+
+.table .btn:hover{
+    transform:translateY(-2px) scale(1.08);
+    box-shadow:0 0 12px rgba(212,175,55,.35);
+}
+
+/* Glow botón editar */
+
+.btn-outline-primary:hover{
+    box-shadow:0 0 12px rgba(13,110,253,.35);
+}
+
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badge{
+    padding:6px 14px;
+    border-radius:50px;
+    font-weight:600;
+    letter-spacing:.3px;
+    transition:.30s;
+}
+
+
+/* ==========================================================
+   BOTONES GENERALES
+========================================================== */
+
 .btn-primary,
 .btn-success,
 .btn-danger{
-    border: none;
-    transition: 0.3s;
+    border:none;
+    transition:.30s;
 }
 
 .btn-primary{
-    background-color: #d4af37;
-    color: black;
+    background:#d4af37;
+    color:#111;
 }
 
 .btn-primary:hover{
-    background-color: #b8932f;
+    background:#b8932f;
 }
 
 .btn-success{
-    background-color: #198754;
+    background:#198754;
 }
 
 .btn-danger{
-    background-color: #b02a37;
+    background:#b02a37;
 }
 
-/* CARD */
-.card{
-    background: linear-gradient(145deg, #1b1b1b, #2a2a2a);
-    border: 1px solid #d4af37;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(212,175,55,0.15);
-    color: white;
-}
 
-/* TITULOS Y TEXTOS */
-.text-muted{
-    color: #d4af37 !important;
-}
+/* ==========================================================
+   BOTÓN AGENDAR
+========================================================== */
 
-h4,
-h5,
-h6{
-    color: #d4af37 !important;
-}
-
-/* BOTON AGENDAR */
 a.btn.btn-outline-primary{
-    color: #d4af37 !important;
-    border-color: #d4af37 !important;
+
+    color:#d4af37 !important;
+    border-color:#d4af37 !important;
+
+    position:relative;
+    overflow:hidden;
 }
 
 a.btn.btn-outline-primary:hover{
-    background-color: #d4af37 !important;
-    color: black !important;
+
+    background:#d4af37 !important;
+    color:#111 !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 18px rgba(212,175,55,.45);
 }
 
-/* BOTON VOLVER */
+/* Destello */
+
+a.btn.btn-outline-primary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:40%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.75),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:.8s;
+}
+
+a.btn.btn-outline-primary:hover::before{
+    left:160%;
+}
+
+
+/* ==========================================================
+   BOTÓN VOLVER
+========================================================== */
+
 a.btn.btn-outline-secondary{
-    color: white !important;
-    border-color: #888 !important;
+
+    color:white !important;
+    border-color:#888 !important;
+
+    position:relative;
+    overflow:hidden;
+
+    transition:.35s ease;
 }
 
 a.btn.btn-outline-secondary:hover{
-    background-color: #d4af37 !important;
-    color: black !important;
-    border-color: #d4af37 !important;
+
+    background:#d4af37 !important;
+    color:#111 !important;
+    border-color:#d4af37 !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 18px rgba(212,175,55,.45);
 }
+
+/* Destello */
+
+a.btn.btn-outline-secondary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:40%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.75),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:.8s ease;
+}
+
+a.btn.btn-outline-secondary:hover::before{
+    left:160%;
+}
+
+
+/* ==========================================================
+   TARJETAS
+========================================================== */
+
+.card{
+    background:linear-gradient(145deg,#1b1b1b,#2a2a2a);
+    border:1px solid #d4af37;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(212,175,55,.15);
+    color:white;
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer-premium{
+    margin-top:80px;
+    padding:20px 0;
+    color:rgba(212,175,55,.75);
+    font-size:.9rem;
+}
+
 </style>
 </head>
 <body>
 <!-- NAVBAR GLOBAL -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="galeria.html">
-<img src="image/logo Angelina.jpeg" width="75" height="55" class="me-2">
+<img src="image/logo Angelina.jpeg" alt="Logo Angelina Estética" width="75" height="55" class="me-2">
 ANGELINA ESTETICA
 </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -178,18 +417,17 @@ ANGELINA ESTETICA
 <!-- Barra de navegación -->
   <nav class="navbar navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand mx-auto" href="citas.html">
-        💅 Mis Citas
-      </a>
+        <a class="navbar-brand mx-auto titulo-principal" href="citas.html">
+            💅 Mis Citas
+        </a>
     </div>
-  </nav>
+</nav>
   <!-- Contenido principal -->
-  <div class="container mt-5">
+  <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-<h4 class="fw-bold m-0"
-      style="color:#d4af37; font-size:1.5rem;">
+<h4 class="fw-bold m-0 titulo-seccion">
     Historial de Citas
-  </h4>
+</h4>
 <a href="nueva_cita.html"
      class="btn btn-outline-primary px-4 py-2">
     <i class="bi bi-plus-circle"></i>
@@ -200,8 +438,8 @@ ANGELINA ESTETICA
 
 
     <!-- Tabla de citas -->
-    <div class="table-responsive shadow-sm">
-      <table class="table table-striped text-center align-middle">
+    <div class="table-responsive shadow-sm tabla-premium">
+      <table class="table table-hover text-center align-middle">
         <thead>
           <tr>
             <th>Fecha</th>
@@ -246,7 +484,7 @@ ANGELINA ESTETICA
           </tr>
 
           <tr>
-            <td>24/05/2026</td>
+            <td>24/06/2026</td>
             <td>9:30 a.m.</td>
             <td>Uñas Acrílicas</td>
             <td>Laura Pineda</td>
@@ -269,9 +507,9 @@ ANGELINA ESTETICA
     </div>
   </div>
 
-  <footer class="text-center mt-5 text-muted">
+  <footer class="text-center footer-premium">
     <small>&copy; 2025 YENJO 1.0 - Soluciones Joyecaemm</small>
-  </footer>
+</footer>
 
 </body>
 </html>
