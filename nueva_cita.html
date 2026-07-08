@@ -19,31 +19,10 @@
   color: #f5f5f5;
   font-family: 'Segoe UI', sans-serif;
   min-height: 100vh;
+  margin:0;
+  padding:0;
 }
-    .navbar-brand {
-      font-weight: bold;
-      color: white !important;
-    }
-    .form-container {
-      max-width: 550px;
-      margin: 50px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .text-muted{
-    color: #d4af37 !important;
-}
-    .btn-primary {
-      background-color: #e83e8c;
-      border: none;
-      border-radius: 25px;
-    }
-    .btn-primary:hover {
-      background-color: #c2185b;
-    }
-  
+     
 /* NAVBAR */
 .navbar {
   background-color: #111111 !important;
@@ -59,25 +38,159 @@
 }
 
 .nav-link{
-    color: white !important;
-    transition: 0.3s;
+
+    color:white !important;
+
+    position:relative;
+
+    transition:.30s ease;
+}
+
+/* Línea inferior */
+
+.nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:#d4af37;
+
+    transform:translateX(-50%);
+
+    transition:width .35s ease;
+}
+
+.nav-link:hover::after{
+
+    width:100%;
+
 }
 
 .nav-link:hover{
     color: #d4af37 !important;
 }
 
-/* CARD PRINCIPAL */
-.card{
-    background: linear-gradient(145deg, #1b1b1b, #2a2a2a);
-    border: 1px solid #d4af37;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(212,175,55,0.15);
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.navbar-brand img{
+
+    border-radius:50%;
+
+    border:2px solid #d4af37;
+
+    box-shadow:0 0 15px rgba(212,175,55,.50);
+
+    transition:all .35s ease;
 }
 
-/* TITULOS */
-h2, h3, h4, label{
-    color: #d4af37;
+.navbar-brand:hover img{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 25px rgba(212,175,55,.85);
+}
+
+/* ==========================================================
+   TÍTULOS
+========================================================== */
+
+/* Título principal de la página */
+.titulo-principal{
+
+    color:#d4af37;
+
+    font-family:'Cinzel', serif;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-top:40px;
+
+    margin-bottom:10px;
+
+    letter-spacing:1px;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,.20);
+}
+
+/* Subtítulo */
+.subtitulo-principal{
+
+    color:#bdbdbd;
+
+    font-size:.95rem;
+
+    opacity:.85;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    letter-spacing:.3px;
+}
+
+/* Títulos internos */
+.titulo-seccion{
+
+    color:#d4af37;
+
+    font-weight:700;
+}
+
+/* Labels */
+.form-label{
+
+    color:#d4af37;
+
+    font-weight:500;
+}
+
+/* ==========================================================
+   FORMULARIO PREMIUM
+========================================================== */
+
+.formulario-premium{
+    max-width:650px;
+    margin:auto;
+}
+
+.card{
+
+    opacity:0;
+    position:relative;
+    overflow:hidden;
+    background:rgba(27,27,27,.75);
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:20px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 0 15px rgba(0,0,0,.4),
+        0 0 10px rgba(212,175,55,.08);
+    animation:fadeUp .8s ease both;
+    transition:all .35s ease;
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+    border-color:rgba(212,175,55,.55);
+    box-shadow:
+        0 0 25px rgba(212,175,55,.20),
+        0 0 40px rgba(212,175,55,.12);
 }
 
 /* INPUTS */
@@ -99,18 +212,171 @@ h2, h3, h4, label{
     color: white;
 }
 
-/* BOTON */
+/* Hover Premium */
+
+.form-control:hover,
+.form-select:hover{
+
+    border-color:#d4af37;
+
+    box-shadow:0 0 8px rgba(212,175,55,.25);
+
+    transition:.30s ease;
+}
+
+/* ==========================================================
+   BOTÓN GUARDAR
+========================================================== */
+
 .btn-primary{
-    background-color: transparent;
-    border: 1px solid #d4af37;
-    color: #d4af37;
-    transition: 0.3s;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        90deg,
+        #c79a1b,
+        #d4af37,
+        #f3d46b,
+        #d4af37,
+        #c79a1b
+    );
+
+    border:none;
+
+    color:#111;
+
+    font-weight:700;
+
+    transition:.35s ease;
 }
 
 .btn-primary:hover{
-    background-color: #d4af37;
-    color: black;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.45);
 }
+
+/* Destello */
+
+.btn-primary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:35%;
+    height:100%;
+
+    background:rgba(255,255,255,.70);
+
+    transform:skewX(-25deg);
+
+    transition:.75s;
+}
+
+.btn-primary:hover::before{
+
+    left:160%;
+
+}
+
+/* Elimina el azul de Bootstrap */
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:focus-visible{
+
+    background:#d4af37 !important;
+
+    color:#111 !important;
+
+    border:none !important;
+
+    outline:none !important;
+
+    box-shadow:none !important;
+}
+
+/* ==========================================================
+   BOTÓN CANCELAR
+========================================================== */
+
+.btn-outline-secondary{
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white !important;
+
+    border:1px solid #888 !important;
+
+    transition:.35s ease;
+}
+
+.btn-outline-secondary:hover{
+
+    background:#d4af37 !important;
+
+    border-color:#d4af37 !important;
+
+    color:#111 !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 18px rgba(212,175,55,.45);
+}
+
+/* Destello */
+
+.btn-outline-secondary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:35%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.75),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:.8s ease;
+}
+
+.btn-outline-secondary:hover::before{
+
+    left:160%;
+
+}
+
+/* Eliminar focus azul */
+
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active,
+.btn-outline-secondary:focus-visible{
+
+    outline:none !important;
+
+    box-shadow:none !important;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
     filter: invert(84%) sepia(38%) saturate(748%) hue-rotate(359deg) brightness(101%) contrast(101%);
@@ -131,19 +397,96 @@ select.form-select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23d4af37' d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592c.86 0 1.32 1.013.753 1.658L8.753 11.14a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
 }
 
+/* ==========================================================
+   CONTENEDOR
+========================================================== */
+
+.container{
+    margin-top:40px;
+    margin-bottom:60px;
+}
+
+/* ==========================================================
+   ANIMACIONES
+========================================================== */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer-premium{
+
+    margin-top:70px;
+
+    padding:20px 0;
+
+    color:rgba(212,175,55,.80);
+
+    text-align:center;
+
+    font-size:.9rem;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:768px){
+
+    .formulario-premium{
+
+        width:95%;
+
+        padding:25px;
+
+    }
+
+    .titulo-principal{
+
+        font-size:2rem;
+
+    }
+
+    .subtitulo-principal{
+
+        font-size:.95rem;
+
+        padding:0 15px;
+
+    }
+
+}
+
 </style>
 </head>
 <body>
 <!-- NAVBAR GLOBAL -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="galeria.html">
-    <img src="image/Logo Angelina.jpeg" width="75" height="55"
-class="me-2 rounded-circle border border-warning"
-style="border-width: 2px !important; box-shadow: 0 0 15px rgba(212,175,55,0.7);"
-style="border-width: 2px !important;">
+    <img
+    src="image/Logo Angelina.jpeg"
+    alt="Logo Angelina Estética"
+    width="75"
+    height="55"
+    class="me-2">
     ANGELINA ESTETICA
 </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -159,20 +502,23 @@ style="border-width: 2px !important;">
   </div>
 </nav>
 
-  <!-- Barra de navegación -->
-  <nav class="navbar navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand mx-auto" href="citas.html">
-        💅 Nueva Cita
-      </a>
-    </div>
-  </nav>
+<h2 class="titulo-principal text-center">
+    <i class="bi bi-calendar2-heart-fill"></i>
+    Nueva Cita
+</h2>
+
+<p class="subtitulo-principal text-center">
+    Agenda tu cita seleccionando el servicio, la profesional y el horario de tu preferencia.
+</p>
 
   <!-- Contenedor principal -->
-  <div class="container form-container">
-    <h4 class="text-center fw-bold text-secondary mb-4">Agendar una Nueva Cita</h4>
+  <div class="container">
 
-    <form>
+      <div class="card shadow p-4 mx-auto formulario-premium">
+          <h3 class="titulo-seccion text-center">
+              Agendar una Nueva Cita
+          </h3>
+          <form>
       <!-- Selección de servicio -->
       <div class="mb-3">
         <label for="servicio" class="form-label fw-semibold">Servicio</label>
@@ -216,18 +562,32 @@ style="border-width: 2px !important;">
       </div>
 
       <!-- Botones -->
-      <div class="d-flex justify-content-between mt-4">
-        <a href="citas.html" class="btn btn-outline-secondary">
-          <i class="bi bi-arrow-left me-2"></i>Cancelar
-        </a>
-        <button type="submit" class="btn btn-primary">
-          <i class="bi bi-check-circle me-2"></i>Guardar Cita
-        </button>
+      <div class="row mt-4 g-3">
+
+          <div class="col-6">
+              <a href="citas.html"
+                 class="btn btn-outline-secondary w-100">
+                  <i class="bi bi-arrow-left me-2"></i>
+                  Cancelar
+              </a>
+          </div>
+
+          <div class="col-6">
+              <button
+                  type="submit"
+                  class="btn btn-primary w-100">
+
+                  <i class="bi bi-check-circle me-2"></i>
+                  Guardar Cita
+
+              </button>
+          </div>
+
       </div>
     </form>
   </div>
-
-  <footer class="text-center mt-5 text-muted">
+</div>
+  <footer class="footer-premium">
     <small>&copy; 2025 YENJO 1.0 - Soluciones Joyecaemm</small>
   </footer>
 
