@@ -39,6 +39,20 @@ body{
    NAVBAR
 ========================================================== */
 
+.navbar-toggler {
+    border: 1px solid #d4af37;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    background-color: rgba(212,175,55,0.15);
+    box-shadow: 0 0 12px rgba(212,175,55,0.4);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 15px rgba(212,175,55,0.6);
+}
+
   .navbar {
     background: rgba(17,17,17,0.90) !important;
 
@@ -142,19 +156,57 @@ body{
    TÍTULOS
 ========================================================== */
 
-.titulo-principal {
-    color: #d4af37;
-    font-weight: 700;
+.titulo-principal{
 
-    margin-bottom: 30px;
+    color:#d4af37;
 
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    text-align:center;
 
-    letter-spacing: 1px;
+    margin-top:30px;
+
+    margin-bottom:30px;
+
+    font-family:'Segoe UI', sans-serif;
+
+    font-size: clamp(1.8rem,3vw,2.5rem);
+
+    font-weight:700;
 
     text-shadow:
-        0 0 10px rgba(212,175,55,0.25),
-        0 0 20px rgba(212,175,55,0.15);
+        0 0 10px rgba(212,175,55,.35),
+        0 0 20px rgba(212,175,55,.20);
+
+}
+
+.subtitulo-principal{
+
+    color:#bdbdbd;
+
+    font-size:.95rem;
+
+    opacity:.85;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    letter-spacing:.3px;
+
+}
+
+.titulo-seccion{
+
+    color:#d4af37;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,.20);
+
 }
 
 /* Línea decorativa */
@@ -172,6 +224,66 @@ body{
     );
 
     border-radius: 10px;
+}
+
+/* ==========================================================
+   FORMULARIOS PREMIUM
+========================================================== */
+
+.form-label{
+
+    color:#d4af37;
+
+    font-weight:600;
+
+}
+
+.form-control,
+.form-select{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(212,175,55,.25);
+
+    color:#fff;
+
+    border-radius:12px;
+
+    transition:all .30s ease;
+
+}
+
+::placeholder{
+
+    color:#d6d6d6 !important;
+
+    opacity:1;
+
+}
+
+.form-control:hover,
+.form-select:hover{
+
+    border-color:#d4af37;
+
+    box-shadow:0 0 8px rgba(212,175,55,.20);
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    border-color:#d4af37;
+
+    box-shadow:
+        0 0 15px rgba(212,175,55,.25);
+
+    transform:scale(1.01);
+
 }
 
 /* ==========================================================
@@ -257,6 +369,96 @@ body{
 }
 
 /* ==========================================================
+   TABLAS PREMIUM
+========================================================== */
+
+/* Contenedor */
+
+.tabla-premium{
+    border-radius:18px;
+    overflow:hidden;
+    background:transparent;
+    box-shadow:none;
+}
+
+/* Tabla */
+
+.table{
+    margin-bottom:0;
+    border-radius:18px;
+    overflow:hidden;
+    background:#ffffff;
+}
+
+/* Encabezado */
+
+.table thead th{
+    background:linear-gradient(
+        90deg,
+        #b8860b,
+        #d4af37,
+        #f3d46b
+    );
+
+    color:#111;
+    font-weight:700;
+    border:none;
+    padding:16px;
+}
+
+/* Filas */
+
+.table tbody tr{
+    transition:all .35s ease;
+}
+
+/* Celdas */
+
+.table tbody td{
+    padding:16px;
+    vertical-align:middle;
+    border-color:#ececec;
+}
+
+/* Hover */
+
+.table-hover tbody tr:hover{
+    background:#fff9ea !important;
+    transform:scale(1.005);
+    box-shadow:inset 5px 0 0 #d4af37;
+    cursor:pointer;
+}
+
+/* BOTONES DE ACCIONES */
+
+.table .btn{
+    margin:0 3px;
+    border-radius:8px;
+    transition:all .30s ease;
+}
+
+.table .btn:hover{
+    transform:translateY(-2px) scale(1.08);
+    box-shadow:0 0 12px rgba(212,175,55,.35);
+}
+
+/* Glow botón editar */
+
+.btn-outline-primary:hover{
+    box-shadow:0 0 12px rgba(13,110,253,.35);
+}
+
+/* BADGES */
+
+.badge{
+    padding:6px 14px;
+    border-radius:50px;
+    font-weight:600;
+    letter-spacing:.3px;
+    transition:.30s;
+}
+
+/* ==========================================================
    BOTONES PREMIUM
 ========================================================== */
 
@@ -326,12 +528,221 @@ body{
     box-shadow: 0 0 15px rgba(212,175,55,0.35) !important;
 }
 
+/* BOTÓN GUARDAR */
+
+.btn-primary{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        90deg,
+        #c79a1b,
+        #d4af37,
+        #f3d46b,
+        #d4af37,
+        #c79a1b
+    );
+
+    border:none;
+
+    color:#111;
+
+    font-weight:700;
+
+    transition:.35s ease;
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.45);
+}
+
+/* Destello */
+
+.btn-primary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:35%;
+    height:100%;
+
+    background:rgba(255,255,255,.70);
+
+    transform:skewX(-25deg);
+
+    transition:.75s;
+}
+
+.btn-primary:hover::before{
+
+    left:160%;
+
+}
+
+/* Elimina el azul de Bootstrap */
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:focus-visible,
+.btn-primary:active:focus{
+
+    background:linear-gradient(
+        90deg,
+        #c79a1b,
+        #d4af37,
+        #f3d46b,
+        #d4af37,
+        #c79a1b
+    ) !important;
+
+    color:#111 !important;
+
+    border:none !important;
+
+    outline:none !important;
+
+    box-shadow:none !important;
+
+}
+
+/* BOTÓN CANCELAR */
+.btn-outline-secondary{
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white !important;
+
+    border:1px solid #888 !important;
+
+    transition:.35s ease;
+
+}
+
+.btn-outline-secondary:hover{
+
+    background:#d4af37 !important;
+
+    color:#111 !important;
+
+    border-color:#d4af37 !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 18px rgba(212,175,55,.45);
+
+}
+
+/* Destello */
+
+.btn-outline-secondary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:40%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.75),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:.8s ease;
+
+}
+
+.btn-outline-secondary:hover::before{
+
+    left:160%;
+
+}
+
+/* Eliminar focus azul */
+
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active,
+.btn-outline-secondary:focus-visible{
+
+    outline:none !important;
+
+    box-shadow:none !important;
+
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(84%) sepia(38%) saturate(748%) hue-rotate(359deg) brightness(101%) contrast(101%);
+    cursor: pointer;
+}
+select {
+    background-color: #1e1e1e !important;
+    color: white !important;
+    border: 1px solid #d4af37 !important;
+}
+
+/* Select Premium
+   Nota:
+   El color azul del elemento seleccionado depende 
+   del navegador y no puede personalizarse completamente.
+*/
+
+select option {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+select.form-select{
+
+    background-color:#1e1e1e !important;
+
+    color:white !important;
+
+    border:1px solid #d4af37 !important;
+
+}
+
+.btn-success,
+.btn-danger{
+    border:none;
+    transition:.30s;
+}
+
+.btn-success{
+    background:#198754;
+}
+
+.btn-danger{
+    background:#b02a37;
+}
+
 /* ==========================================================
    FOOTER
 ========================================================== */
 
 .footer-premium {
-    margin-top: 50px;
+    margin-top: 70px;
     padding: 20px;
 
     border-top: 1px solid rgba(212,175,55,0.3);
@@ -353,6 +764,23 @@ body{
 /* ==========================================================
    ANIMACIONES
 ========================================================== */
+
+/* Animaciones escalonadas */
+.delay-1{
+    animation-delay:0.2s;
+}
+
+.delay-2{
+    animation-delay:0.5s;
+}
+
+.delay-3{
+    animation-delay:0.8s;
+}
+
+.delay-4{
+    animation-delay:1.1s;
+}
 
 /* ANIMACIÓN SUAVE */
 @keyframes fadeUp {
@@ -384,7 +812,97 @@ body{
    CONTENEDORES
 ========================================================== */
 
-.container{
+.contenedor-premium{
     margin-top:40px;
+    margin-bottom:60px;
 }
 
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+/* Tablets */
+
+@media (max-width:992px){
+
+    .navbar-brand{
+
+        font-size:1.5rem;
+
+    }
+
+}
+
+/* Tablets pequeñas */
+
+@media (max-width:768px){
+
+    .titulo-principal{
+
+        font-size:2rem;
+
+    }
+
+    .subtitulo-principal{
+
+        font-size:.95rem;
+
+        padding:0 15px;
+
+    }
+
+    .formulario-premium{
+
+        width:95%;
+
+        padding:25px;
+
+    }
+
+    .container{
+
+        margin-top:25px;
+
+    }
+
+    .card{
+
+        margin-bottom:20px;
+
+    }
+
+}
+
+/* Móviles */
+
+@media (max-width:576px){
+
+    .titulo-principal{
+
+        font-size:1.7rem;
+
+    }
+
+    .navbar-brand{
+
+        font-size:1.2rem;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+    }
+
+}
+
+/* ==========================================================
+   UTILIDADES
+========================================================== */
+
+.card-ancho-600{
+
+    max-width:600px;
+
+}
