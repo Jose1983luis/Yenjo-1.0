@@ -253,6 +253,24 @@ body{
 
 }
 
+.form-select{
+
+    appearance:none;
+
+    background-color:rgba(255,255,255,.04);
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23d4af37' d='M3.2 5.5 8 10.3l4.8-4.8 1.2 1.2L8 12.7 2 6.7z'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+
+    background-position:right .9rem center;
+
+    background-size:14px;
+
+    padding-right:2.6rem;
+
+}
+
 ::placeholder{
 
     color:#d6d6d6 !important;
@@ -456,6 +474,58 @@ body{
     font-weight:600;
     letter-spacing:.3px;
     transition:.30s;
+}
+
+/* ==========================================================
+   DASHBOARD
+========================================================== */
+
+.card-dashboard{
+
+    background:linear-gradient(145deg,#1b1b1b,#2a2a2a);
+
+    border:1px solid #d4af37;
+
+    border-radius:20px;
+
+    transition:.35s ease;
+
+    color:#fff;
+
+    box-shadow:0 0 20px rgba(212,175,55,.15);
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 0 25px rgba(212,175,55,.4);
+
+}
+
+/* Iconos Dashboard */
+
+.icono-dashboard{
+
+    font-size:3rem;
+
+    color:#d4af37;
+
+}
+
+.card-dashboard-titulo{
+
+    color:#d4af37;
+
+    font-weight:700;
+
+}
+
+.card-dashboard-texto{
+
+    color:#cccccc !important;
+
 }
 
 /* ==========================================================
@@ -679,6 +749,69 @@ body{
 
 }
 
+/* Botón Cerrar Sesión */
+
+.btn-outline-danger{
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 2px solid #d4af37 !important;
+
+    color: #d4af37 !important;
+
+    background: transparent !important;
+
+    font-weight: 600;
+
+    transition: all .35s ease;
+
+}
+
+.btn-outline-danger:hover{
+
+    background: #d4af37 !important;
+
+    color: #111 !important;
+
+    border-color: #d4af37 !important;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 18px rgba(212,175,55,.45);
+
+}
+
+/* Destello */
+.btn-outline-danger::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-150%;
+
+    width:35%;
+
+    height:100%;
+
+    background: rgba(255,255,255,0.70);
+
+    transform: skewX(-25deg);
+
+    transition:.75s;
+
+}
+
+.btn-outline-danger:hover::before{
+
+    left:160%;
+
+}
+
 /* Eliminar focus azul */
 
 .btn-outline-secondary:focus,
@@ -741,24 +874,40 @@ select.form-select{
    FOOTER
 ========================================================== */
 
-.footer-premium {
-    margin-top: 70px;
-    padding: 20px;
+footer{
 
-    border-top: 1px solid rgba(212,175,55,0.3);
+    margin-top: 60px;
 
-    color: #d4af37;
+    padding: 25px 0;
+
+    border-top: 1px solid rgba(212,175,55,.25);
 
     text-align: center;
 
-    background: rgba(255,255,255,0.02);
+    background: transparent;
 
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
 }
 
-.footer-premium small {
-    letter-spacing: 1px;
+footer small{
+
+    color: #d4af37;
+
+    font-size: .90rem;
+
+    letter-spacing: .6px;
+
+    opacity: .85;
+
+    transition: .30s;
+
+}
+
+footer small:hover{
+
+    opacity: 1;
+
+    color: #f5d76e;
+
 }
 
 /* ==========================================================

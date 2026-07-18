@@ -6,123 +6,17 @@
   <title>YENJO 1.0 - Menú Principal</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">    
-  <style>
-
-body {
-  background: linear-gradient(
-    to bottom,
-    #111111 0%,
-    #0a0a0a 40%,
-    #000000 100%
-  );
-  color: #f5f5f5;
-  font-family: 'Segoe UI', sans-serif;
-  min-height: 100vh;
-}
-
-/* NAVBAR */
-.navbar {
-  background-color: #111111 !important;
-  border-bottom: 1px solid #d4af37;
-}
-
-.navbar-brand{
-    color: #d4af37 !important;
-    font-family: 'Cinzel', serif;
-    font-size: 1.7rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.nav-link{
-    color: white !important;
-    transition: 0.3s;
-}
-
-.nav-link:hover{
-    color: #d4af37 !important;
-}
-
-/* LOGO */
-.navbar-brand img{
-    border-radius: 50%;
-    border: 2px solid #d4af37;
-    box-shadow: 0 0 15px rgba(212,175,55,0.5);
-}
-
-/* TITULO */
-h4{
-    color: #d4af37 !important;
-    font-weight: bold;
-}
-
-h4 span{
-    color: #d4af37 !important;
-}
-
-/* TARJETAS */
-.card-menu{
-    background: linear-gradient(145deg, #1b1b1b, #2a2a2a);
-    border: 1px solid #d4af37;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    color: white;
-    box-shadow: 0 0 20px rgba(212,175,55,0.15);
-}
-
-.card-menu:hover{
-    transform: translateY(-8px);
-    box-shadow: 0 0 25px rgba(212,175,55,0.4);
-}
-
-/* ICONOS */
-.icono{
-    font-size: 3rem;
-    color: #d4af37;
-}
-
-/* TITULOS TARJETAS */
-.card-menu h5{
-    color: #d4af37;
-    font-weight: bold;
-}
-
-/* TEXTO TARJETAS */
-.card-menu p{
-    color: #cccccc !important;
-}
-
-/* BOTON CERRAR SESION */
-.btn-outline-danger{
-    border: 1px solid #d4af37 !important;
-    color: #d4af37 !important;
-    transition: 0.3s;
-}
-
-.btn-outline-danger:hover{
-    background-color: #d4af37 !important;
-    color: black !important;
-}
-
-/* FOOTER */
-footer{
-    color: #d4af37 !important;
-}
-.text-muted{
-    color: #d4af37 !important;
-}
-
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/premium.css">    
+  
 </head>
 <body>
   <!-- NAVBAR GLOBAL -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="galeria.html">
   <img src="image/Logo Angelina.jpeg" width="75" height="55"
-  class="me-2 rounded-circle border border-warning"
-  style="border-width: 2px !important; box-shadow: 0 0 15px rgba(212,175,55,0.7);">
+  class="me-2 rounded-circle border border-warning">
 
   ANGELINA ESTETICA
 </a>
@@ -145,18 +39,18 @@ footer{
 
   <!-- Contenedor principal -->
   <div class="container mt-5 text-center">
-    <h4 class="mb-4">
-  Bienvenida, <span class="fw-bold">Angelina</span>
-</h4>
+    <h2 class="titulo-principal text-center">
+    Bienvenida, Angelina
+    </h2>
 
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <!-- Opción Perfil -->
       <div class="col">
         <a href="perfil.html" class="text-decoration-none">
-          <div class="card card-menu shadow-sm p-4">
-            <i class="bi bi-person-circle icono"></i>
-            <h5 class="mt-3">Mi Perfil</h5>
-            <p class="text-muted small">Gestiona tu información personal</p>
+          <div class="card card-dashboard shadow-sm p-4">
+            <i class="bi bi-person-circle icono-dashboard"></i>
+            <h5 class="card-dashboard-titulo mt-3">Mi Perfil</h5>
+            <p class="card-dashboard-texto small">Gestiona tu información personal</p>
           </div>
         </a>
       </div>
@@ -164,10 +58,10 @@ footer{
       <!-- Opción Galería -->
       <div class="col">
         <a href="galeria.html" class="text-decoration-none">
-          <div class="card card-menu shadow-sm p-4">
-            <i class="bi bi-images icono"></i>
-            <h5 class="mt-3">Galería</h5>
-            <p class="text-muted small">Visualiza tus trabajos y estilos</p>
+          <div class="card card-dashboard shadow-sm p-4">
+            <i class="bi bi-images icono-dashboard"></i>
+            <h5 class="card-dashboard-titulo mt-3">Galería</h5>
+            <p class="card-dashboard-texto small">Visualiza tus trabajos y estilos</p>
           </div>
         </a>
       </div>
@@ -175,10 +69,10 @@ footer{
       <!-- Opción Pagos -->
       <div class="col">
         <a href="pagos.html" class="text-decoration-none">
-          <div class="card card-menu shadow-sm p-4">
-            <i class="bi bi-credit-card icono"></i>
-            <h5 class="mt-3">Pagos</h5>
-            <p class="text-muted small">Gestiona tus métodos de pago</p>
+          <div class="card card-dashboard shadow-sm p-4">
+            <i class="bi bi-credit-card icono-dashboard"></i>
+            <h5 class="card-dashboard-titulo mt-3">Pagos</h5>
+            <p class="card-dashboard-texto small">Gestiona tus métodos de pago</p>
           </div>
         </a>
       </div>
@@ -186,10 +80,10 @@ footer{
       <!-- Opción Citas -->
       <div class="col">
         <a href="citas.html" class="text-decoration-none">
-          <div class="card card-menu shadow-sm p-4">
-            <i class="bi bi-calendar-check icono"></i>
-            <h5 class="mt-3">Mis Citas</h5>
-            <p class="text-muted small">Consulta y organiza tus reservas</p>
+          <div class="card card-dashboard shadow-sm p-4">
+            <i class="bi bi-calendar-check icono-dashboard"></i>
+            <h5 class="card-dashboard-titulo mt-3">Mis Citas</h5>
+            <p class="card-dashboard-texto small">Consulta y organiza tus reservas</p>
           </div>
         </a>
       </div>
@@ -197,14 +91,14 @@ footer{
 
     <!-- Botón cerrar sesión -->
     <div class="mt-5">
-      <a href="index.html" class="btn btn-outline-danger w-50">
+      <a href="galeria.html" class="btn btn-outline-danger w-50">
         <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
       </a>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="text-center mt-5 text-muted">
+  <footer>
     <small>&copy; 2025 YENJO 1.0 - Soluciones Joyecaemm</small>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
