@@ -11,9 +11,7 @@
 ========================================================== */
 
 body{
-
     scroll-behavior:smooth;
-
     background:
         radial-gradient(circle at top,
         rgba(212,175,55,.04),
@@ -24,15 +22,10 @@ body{
         #0a0a0a);
 
     color:#f5f5f5;
-
     font-family:'Segoe UI',sans-serif;
-
     min-height:100vh;
-
     margin:0;
-
     padding:0;
-
 }
 
 /* ==========================================================
@@ -40,13 +33,10 @@ body{
 ========================================================== */
 
 .navbar-toggler{
-
     border:1px solid #d4af37;
-
     transition:
         background-color 0.3s ease,
         box-shadow 0.3s ease;
-
 }
 
 .navbar-toggler:hover {
@@ -58,14 +48,11 @@ body{
     box-shadow: 0 0 15px rgba(212,175,55,0.6);
 }
 
-  .navbar {
+.navbar {
     background: rgba(17,17,17,0.90) !important;
-
     border-bottom: 1px solid #d4af37;
-
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-
     box-shadow: 0 0 20px rgba(0,0,0,0.35);
     transition:
     background 0.4s ease,
@@ -75,15 +62,12 @@ body{
 }
 
 /* NAVBAR DINAMICO AL HACER SCROLL */
+
 .navbar.scrolled {
-
     background: rgba(10,10,10,0.97) !important;
-
     border-bottom: 1px solid rgba(212,175,55,0.6);
-
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
-
     box-shadow:
         0 0 20px rgba(212,175,55,0.15),
         0 8px 25px rgba(0,0,0,0.5);
@@ -104,9 +88,7 @@ body{
 
   .nav-link {
     position: relative;
-
     color: #f5f5f5 !important;
-
     transition: color 0.3s ease;
 }
 
@@ -116,17 +98,12 @@ body{
 
 .nav-link::after {
     content: "";
-
     position: absolute;
-
     left: 0;
     bottom: -4px;
-
     width: 0;
     height: 2px;
-
     background: #d4af37;
-
     transition: width 0.3s ease;
 }
 
@@ -146,9 +123,7 @@ body{
 .navbar-brand img {
   border-radius: 50%;
   border: 1px solid #d4af37;
-
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
@@ -156,7 +131,6 @@ body{
 
 .navbar-brand:hover img {
   transform: scale(1.08) rotate(3deg);
-
   box-shadow:
     0 0 20px rgba(212,175,55,0.6),
     0 0 35px rgba(212,175,55,0.3);
@@ -167,156 +141,132 @@ body{
 ========================================================== */
 
 .titulo-principal{
-
     color:#d4af37;
-
     text-align:center;
-
     margin-top:30px;
-
     margin-bottom:30px;
-
     font-family:'Segoe UI', sans-serif;
-
     font-size: clamp(1.8rem,3vw,2.5rem);
-
     font-weight:700;
-
     text-shadow:
         0 0 10px rgba(212,175,55,.35),
         0 0 20px rgba(212,175,55,.20);
-
 }
 
 .subtitulo-principal{
-
     color:#bdbdbd;
-
     font-size:.95rem;
-
     opacity:.85;
-
     text-align:center;
-
     margin-bottom:35px;
-
     letter-spacing:.3px;
-
 }
 
 .titulo-seccion{
-
     color:#d4af37;
-
     font-weight:700;
-
     text-align:center;
-
     margin-bottom:25px;
-
     text-shadow:
         0 0 10px rgba(212,175,55,.20);
-
 }
 
 /* Linea decorativa */
+
 .titulo-linea {
     width: 150px;
     height: 3px;
-
     margin: -15px auto 35px auto;
-
     background: linear-gradient(
         to right,
         transparent,
         #d4af37,
         transparent
     );
-
     border-radius: 10px;
+}
+
+/* ==========================================================
+   TEXTOS
+========================================================== */
+
+.texto-descriptivo{
+    color:#b8b8b8;
+    text-align:center;
+    margin-bottom:25px;
+    font-size:1rem;
+    line-height:1.6;
 }
 
 /* ==========================================================
    FORMULARIOS PREMIUM
 ========================================================== */
 
+.formulario-premium{
+    background:linear-gradient(145deg,#1b1b1b,#2a2a2a);
+    border:1px solid #d4af37;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(212,175,55,.15);
+    padding:25px;
+    height:100%;
+    transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.formulario-premium:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(212,175,55,.25);
+}
+
 .form-label{
-
     color:#d4af37;
-
     font-weight:600;
-
 }
 
 .form-control,
 .form-select{
-
     background-color:rgba(255,255,255,.04);
-
     border:1px solid rgba(212,175,55,.25);
-
     color:#fff;
-
     border-radius:12px;
-
     transition:
     background 0.30s ease,
     border-color 0.30s ease,
     box-shadow 0.30s ease,
     transform 0.30s ease;
-
 }
 
 .form-select{
-
     appearance:none;
-
     background-color:rgba(255,255,255,.04);
-
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23d4af37' d='M3.2 5.5 8 10.3l4.8-4.8 1.2 1.2L8 12.7 2 6.7z'/%3E%3C/svg%3E");
-
     background-repeat:no-repeat;
-
     background-position:right .9rem center;
-
     background-size:14px;
-
     padding-right:2.6rem;
-
 }
 
 .form-control::placeholder,
 .form-select::placeholder{
-
     color:#d6d6d6 !important;
-
     opacity:1;
-
 }
 
 .form-control:hover,
 .form-select:hover{
-
     border-color:#d4af37;
-
     box-shadow:0 0 8px rgba(212,175,55,.20);
-
 }
 
 .form-control:focus,
 .form-select:focus{
-
     background-color:rgba(255,255,255,.08);
-
     color:#fff;
-
     border-color:#d4af37;
-
     box-shadow:
         0 0 15px rgba(212,175,55,.25);
-
     transform:scale(1.01);
-
 }
 
 /* ==========================================================
@@ -330,18 +280,14 @@ body{
     border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 20px;
     overflow: hidden;
-
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    
-
     transition:
     transform .4s ease,
     border-color .4s ease,
     box-shadow .4s ease;
     animation: fadeUp 0.8s ease forwards;
     will-change: transform;
-
     box-shadow:
       0 0 15px rgba(0,0,0,0.4),
       0 0 10px rgba(212,175,55,0.08);
@@ -352,34 +298,28 @@ body{
 
 .card:hover {
     transform: translateY(-12px) scale(1.03) !important;
-
     border-color: rgba(212,175,55,0.6);
-
     box-shadow:
       0 0 25px rgba(212,175,55,0.18),
       0 0 40px rgba(212,175,55,0.10);
 }
 
 /* REFLEJO DINAMICO */
+
 .card::before {
     content: "";
-
     position: absolute;
     top: 0;
     left: -120%;
-
     width: 70%;
     height: 100%;
-
     background: linear-gradient(
         120deg,
         transparent,
         rgba(255,255,255,0.08),
         transparent
     );
-
     transform: skewX(-25deg);
-
     transition: left 0.8s ease;
 }
 
@@ -387,19 +327,18 @@ body{
     left: 140%;
 }
 
-  .card-title {
+.card-title {
     color: #d4af37;
     font-weight: bold;
-  }
+}
 
-  .card-text {
+.card-text {
     color: #dddddd;
-  }
+}
 
-  .card-img-top {
+.card-img-top {
     height: 250px;
     object-fit: cover;
-
     transition: transform 0.5s ease;
 }
 
@@ -438,7 +377,6 @@ body{
         #d4af37,
         #f3d46b
     );
-
     color:#111;
     font-weight:700;
     border:none;
@@ -506,53 +444,35 @@ body{
 ========================================================== */
 
 .card-dashboard{
-
     background:linear-gradient(145deg,#1b1b1b,#2a2a2a);
-
     border:1px solid #d4af37;
-
     border-radius:20px;
-
     transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
-
     color:#fff;
-
     box-shadow:0 0 20px rgba(212,175,55,.15);
-
 }
 
 .card-dashboard:hover{
-
     transform:translateY(-8px);
-
     box-shadow:0 0 25px rgba(212,175,55,.4);
-
 }
 
 /* Iconos Dashboard */
 
 .icono-dashboard{
-
     font-size:3rem;
-
     color:#d4af37;
-
 }
 
 .card-dashboard-titulo{
-
     color:#d4af37;
-
     font-weight:700;
-
 }
 
 .card-dashboard-texto{
-
     color:#cccccc;
-
 }
 
 /* ==========================================================
@@ -564,9 +484,7 @@ body{
     overflow: hidden;
     border-color: #d4af37;
     color: #d4af37;
-
     border-radius: 12px;
-
     transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
@@ -579,33 +497,26 @@ body{
     background-color: #d4af37;
     border-color: #d4af37;
     color: black;
-
     transform: translateY(-2px);
-
     box-shadow: 0 0 15px rgba(212,175,55,0.35);
 }
 
 /* BRILLO EN BOTONES */
+
 .btn-outline-primary::before {
     content: "";
-
     position: absolute;
-
     top: 0;
     left: -120%;
-
     width: 50%;
     height: 100%;
-
     background: linear-gradient(
         120deg,
         transparent,
         rgba(255,255,255,0.35),
         transparent
     );
-
     transform: skewX(-25deg);
-
     transition: left 0.8s;
 }
 
@@ -614,13 +525,13 @@ body{
 }
 
 /* EVITAR AZUL DE BOOTSTRAP */
+
 .btn-outline-primary:focus,
 .btn-outline-primary:active,
 .btn-outline-primary.active {
     background-color: #d4af37 !important;
     border-color: #d4af37 !important;
     color: black !important;
-
     box-shadow: 0 0 15px rgba(212,175,55,0.35) !important;
 }
 
@@ -633,11 +544,8 @@ body{
 /* BOTON GUARDAR */
 
 .btn-primary{
-
     position:relative;
-
     overflow:hidden;
-
     background:linear-gradient(
         90deg,
         #c79a1b,
@@ -646,22 +554,16 @@ body{
         #d4af37,
         #c79a1b
     );
-
     border:none;
-
     color:#111;
-
     font-weight:700;
-
     transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
 }
 
 .btn-primary:hover{
-
     transform:translateY(-2px);
-
     box-shadow:
         0 0 18px rgba(212,175,55,.45);
 }
@@ -669,28 +571,19 @@ body{
 /* Destello */
 
 .btn-primary::before{
-
     content:"";
-
     position:absolute;
-
     top:0;
     left:-150%;
-
     width:35%;
     height:100%;
-
     background:rgba(255,255,255,.70);
-
     transform:skewX(-25deg);
-
     transition: left 0.75s;
 }
 
 .btn-primary:hover::before{
-
     left:160%;
-
 }
 
 /* Elimina el azul de Bootstrap */
@@ -701,7 +594,6 @@ body{
 .btn-primary:active,
 .btn-primary:focus-visible,
 .btn-primary:active:focus{
-
     background:linear-gradient(
         90deg,
         #c79a1b,
@@ -710,150 +602,99 @@ body{
         #d4af37,
         #c79a1b
     ) !important;
-
     color:#111 !important;
-
     border:none !important;
-
     outline:none !important;
-
     box-shadow:none !important;
-
 }
 
 /* BOTON CANCELAR */
+
 .btn-outline-secondary{
-
     position:relative;
-
     overflow:hidden;
-
     color:white !important;
-
     border:1px solid #888 !important;
-
     transition:
     background-color 0.35s ease,
     border-color 0.35s ease,
     color 0.35s ease,
     transform 0.35s ease,
     box-shadow 0.35s ease;
-
 }
 
 .btn-outline-secondary:hover{
-
     background-color:#d4af37 !important;
-
     color:#111 !important;
-
     border-color:#d4af37 !important;
-
     transform:translateY(-2px);
-
     box-shadow:0 0 18px rgba(212,175,55,.45);
-
 }
 
 /* Destello */
 
 .btn-outline-secondary::before{
-
     content:"";
-
     position:absolute;
-
     top:0;
     left:-150%;
-
     width:40%;
     height:100%;
-
     background:linear-gradient(
         120deg,
         transparent,
         rgba(255,255,255,.75),
         transparent
     );
-
     transform:skewX(-25deg);
-
     transition: left 0.8s ease;
-
 }
 
 .btn-outline-secondary:hover::before{
-
     left:160%;
-
 }
 
 /* Boton Cerrar Sesion */
 
 .btn-outline-danger{
-
     position: relative;
-
     overflow: hidden;
-
     border: 2px solid #d4af37 !important;
-
     color: #d4af37 !important;
-
     background: transparent !important;
-
     font-weight: 600;
-
     transition:
     background-color 0.35s ease,
     border-color 0.35s ease,
     color 0.35s ease,
     transform 0.35s ease,
     box-shadow 0.35s ease;
-
 }
 
 .btn-outline-danger:hover{
-
     background-color: #d4af37 !important;
-
     color: #111 !important;
-
     border-color: #d4af37 !important;
-
     transform: translateY(-2px);
-
     box-shadow: 0 0 18px rgba(212,175,55,.45);
-
 }
 
 /* Destello */
+
 .btn-outline-danger::before{
-
     content:"";
-
     position:absolute;
-
     top:0;
-
     left:-150%;
-
     width:35%;
-
     height:100%;
-
     background: rgba(255,255,255,0.70);
-
     transform: skewX(-25deg);
-
     transition: left 0.75s;
-
 }
 
 .btn-outline-danger:hover::before{
-
     left:160%;
-
 }
 
 /* Eliminar focus azul */
@@ -861,11 +702,8 @@ body{
 .btn-outline-secondary:focus,
 .btn-outline-secondary:active,
 .btn-outline-secondary:focus-visible{
-
     outline:none !important;
-
     box-shadow:none !important;
-
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator,
@@ -886,13 +724,9 @@ select option {
 }
 
 select.form-select{
-
     background-color:#1e1e1e !important;
-
     color:white !important;
-
     border:1px solid #d4af37 !important;
-
 }
 
 .btn-success,
@@ -910,45 +744,102 @@ select.form-select{
 }
 
 /* ==========================================================
+   LOGIN
+========================================================== */
+
+.login-card{
+    background:linear-gradient(145deg,#1b1b1b,#2a2a2a);
+    border:1px solid #d4af37;
+    border-radius:20px;
+    padding:35px;
+    width:100%;
+    max-width:420px;
+    box-shadow:0 0 25px rgba(212,175,55,.20);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.login-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 30px rgba(212,175,55,.35);
+} 
+
+/* LINKS */
+
+.login-links a{
+    color:#d4af37;
+    text-decoration:none;
+    transition:
+        color 0.30s ease;
+}
+
+.login-links a:hover{
+    color:#f5d76e;
+    text-decoration:underline;
+}
+
+.login-links{
+    margin-top:25px;
+}
+
+/* ==========================================================
+   MÉTODOS DE PAGO
+========================================================== */
+
+.metodo-pago{
+    background-color:#1f1f1f;
+    border:2px solid #d4af37;
+    border-radius:12px;
+    transition:
+        transform .30s ease,
+        box-shadow .30s ease;
+}
+
+.metodo-pago:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 12px rgba(212,175,55,.25);
+}
+
+.metodo-pago .form-check-label{
+    color:#ffffff;
+}
+
+.metodo-pago .form-check-input{
+    background-color:#111;
+    border:1px solid #d4af37;
+}
+
+.metodo-pago .form-check-input:checked{
+    background-color:#d4af37;
+    border-color:#d4af37;
+}
+
+/* ==========================================================
    FOOTER
 ========================================================== */
 
 footer{
-
     margin-top: 60px;
-
     padding: 25px 0;
-
     border-top: 1px solid rgba(212,175,55,.25);
-
     text-align: center;
-
     background-color: transparent;
-
 }
 
 footer small{
-
     color: #d4af37;
-
     font-size: .90rem;
-
     letter-spacing: .6px;
-
     opacity: .85;
-
     transition:
     color 0.30s ease,
     opacity 0.30s ease;
-
 }
 
 footer small:hover{
-
     opacity: 1;
-
     color: #f5d76e;
-
 }
 
 /* ==========================================================
@@ -956,6 +847,7 @@ footer small:hover{
 ========================================================== */
 
 /* Animaciones escalonadas */
+
 .delay-1{
     animation-delay:0.2s;
 }
@@ -972,7 +864,8 @@ footer small:hover{
     animation-delay:1.1s;
 }
 
-/* ANIMACION SUAVE */
+/* Animacion suave */
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -985,7 +878,8 @@ footer small:hover{
   }
   
 }
-/* ENTRADA DE NAVBAR */
+/* Animacion de entrada del navbar */
+
 @keyframes navbarFade {
     from {
         opacity: 0;
@@ -1014,77 +908,49 @@ footer small:hover{
 /* Tablets */
 
 @media (max-width:992px){
-
     .navbar-brand{
-
         font-size:1.5rem;
-
     }
-
 }
 
 /* Tablets pequeñas */
 
 @media (max-width:768px){
-
     .titulo-principal{
-
         font-size:2rem;
-
     }
 
     .subtitulo-principal{
-
         font-size:.95rem;
-
         padding:0 15px;
-
     }
 
     .formulario-premium{
-
         width:95%;
-
-        padding:25px;
-
     }
 
     .container{
-
         margin-top:25px;
-
     }
 
     .card{
-
         margin-bottom:20px;
-
     }
-
 }
 
 /* Moviles */
 
 @media (max-width:576px){
-
     .titulo-principal{
-
         font-size:1.7rem;
-
     }
 
     .navbar-brand{
-
         font-size:1.2rem;
-
     }
-
     .btn{
-
         width:100%;
-
     }
-
 }
 
 /* ==========================================================
@@ -1092,7 +958,17 @@ footer small:hover{
 ========================================================== */
 
 .card-ancho-600{
-
     max-width:600px;
-
 }
+
+.mapa-premium{
+    border:1px solid #d4af37;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(212,175,55,.15);
+}
+
+.icono-premium{
+    color:#d4af37;
+}
+
