@@ -273,3 +273,4 @@ INNER JOIN servicio s
     ON c.id_servicio = s.id_servicio
 ORDER BY p.id_pago;
 
+SELECT @@port, @@hostname, @@version;
