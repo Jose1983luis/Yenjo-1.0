@@ -274,3 +274,36 @@ INNER JOIN servicio s
 ORDER BY p.id_pago;
 
 SELECT @@port, @@hostname, @@version;
+
+SELECT 
+    id_usuario,
+    id_rol,
+    nombre,
+    apellido,
+    correo_electronico,
+    telefono,
+    password_hash,
+    fecha_registro,
+    estado
+FROM usuario
+ORDER BY id_usuario DESC
+LIMIT 1;
+
+USE yenjo_1_0;
+
+SELECT
+    id_usuario,
+    id_rol,
+    nombre,
+    apellido,
+    correo_electronico,
+    telefono,
+    estado
+FROM usuario
+WHERE id_usuario = 4;
+
+USE yenjo_1_0;
+
+SELECT *
+FROM usuario
+WHERE id_usuario = 4;
