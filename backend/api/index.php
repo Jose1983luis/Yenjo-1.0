@@ -9,6 +9,7 @@ require_once __DIR__ . '/../controllers/UsuarioController.php';
 require_once __DIR__ . '/../controllers/ServicioController.php';
 require_once __DIR__ . '/../controllers/DisponibilidadController.php';
 require_once __DIR__ . '/../controllers/CitaController.php';
+require_once __DIR__ . '/../controllers/PagoController.php';
 
 $metodo = $_SERVER['REQUEST_METHOD'];
 $recurso = $_GET['recurso'] ?? null;
@@ -38,9 +39,11 @@ if ($metodo === 'GET' && $recurso === 'usuarios') {
 } elseif ($metodo === 'PUT' && $recurso === 'usuarios') {
     $controller = new UsuarioController($conexion);
     $controller->actualizar((int) $_GET['id']);
+
 } elseif ($metodo === 'DELETE' && $recurso === 'usuarios') {
     $controller = new UsuarioController($conexion);
     $controller->eliminar((int) $_GET['id']);
+
 } elseif ($metodo === 'GET' && $recurso === 'servicios') {
     $controller = new ServicioController($conexion);
     if (isset($_GET['id'])) {
@@ -55,6 +58,7 @@ if ($metodo === 'GET' && $recurso === 'usuarios') {
 } elseif ($metodo === 'PUT' && $recurso === 'servicios') {
     $controller = new ServicioController($conexion);
     $controller->actualizar((int) $_GET['id']);
+
 } elseif ($metodo === 'DELETE' && $recurso === 'servicios') {
     $controller = new ServicioController($conexion);
     $controller->eliminar((int) $_GET['id']);
@@ -90,9 +94,28 @@ if ($metodo === 'GET' && $recurso === 'usuarios') {
 } elseif ($metodo === 'PUT' && $recurso === 'citas') {
     $controller = new CitaController($conexion);
     $controller->actualizar((int) $_GET['id']);
+
 } elseif ($metodo === 'DELETE' && $recurso === 'citas') {
     $controller = new CitaController($conexion);
     $controller->eliminar((int) $_GET['id']);
+
+} elseif ($metodo === 'GET' && $recurso === 'pagos') {
+    $controller = new PagoController($conexion);
+    if (isset($_GET['id'])) {
+        $controller->obtenerPorId((int) $_GET['id']);
+    } else {
+        $controller->obtenerTodos();
+    }
+} elseif ($metodo === 'POST' && $recurso === 'pagos') {
+    $controller = new PagoController($conexion);
+    $controller->crear();
+} elseif ($metodo === 'PUT' && $recurso === 'pagos') {
+    $controller = new PagoController($conexion);
+    $controller->actualizar((int) $_GET['id']);
+} elseif ($metodo === 'DELETE' && $recurso === 'pagos') {
+    $controller = new PagoController($conexion);
+    $controller->eliminar((int) $_GET['id']);
+
 } elseif ($metodo === 'POST' && $recurso === 'auth' && ($_GET['accion'] ?? '') === 'login') {
     $controller = new AutenticacionController($conexion);
     $controller->iniciarSesion();
