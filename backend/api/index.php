@@ -10,6 +10,7 @@ require_once __DIR__ . '/../controllers/ServicioController.php';
 require_once __DIR__ . '/../controllers/DisponibilidadController.php';
 require_once __DIR__ . '/../controllers/CitaController.php';
 require_once __DIR__ . '/../controllers/PagoController.php';
+require_once __DIR__ . '/../controllers/DashboardController.php';
 
 $metodo = $_SERVER['REQUEST_METHOD'];
 $recurso = $_GET['recurso'] ?? null;
@@ -125,10 +126,12 @@ if ($metodo === 'GET' && $recurso === 'usuarios') {
     ($_GET['accion'] ?? '') === 'logout') {
     $controller = new AutenticacionController($conexion);
     $controller->cerrarSesion();
+} elseif ($metodo === 'GET' && $recurso === 'dashboard') {
+    $controller = new DashboardController($conexion);
+    $controller->obtenerResumen();
 
     } else {
-        
-    echo json_encode([
-        'mensaje' => 'API REST de YENJO 1.0 funcionando correctamente'
-    ]);
-}
+        echo json_encode([
+            'mensaje' => 'API REST de YENJO 1.0 funcionando correctamente'
+        ]);
+    }
