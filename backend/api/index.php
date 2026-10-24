@@ -26,6 +26,38 @@ if (
     }
 }
 
+/**
+ * Protección de las operaciones administrativas de Servicios.
+ * La consulta GET permanece disponible públicamente.
+ */
+if (
+    $recurso === 'servicios' &&
+    in_array($metodo, ['POST', 'PUT', 'DELETE'], true)
+) {
+    if (!AutenticacionMiddleware::verificarRol(['Administrador'])) {
+        exit;
+    }
+}
+
+if (
+    $recurso === 'disponibilidad' &&
+    in_array($metodo, ['POST', 'PUT', 'DELETE'], true)
+) {
+    if (!AutenticacionMiddleware::verificarRol(['Administrador', 'Estilista'])) {
+        exit;
+    }
+}
+
+/**
+ * Protección de sesión para todas las operaciones de Citas.
+ * Los permisos específicos se validarán en CitaController.
+ */
+if ($recurso === 'citas') {
+    if (!AutenticacionMiddleware::verificarSesion()) {
+        exit;
+    }
+}
+
 if ($metodo === 'GET' && $recurso === 'usuarios') {
     $controller = new UsuarioController($conexion);
     if (isset($_GET['id'])) {
@@ -89,6 +121,17 @@ if ($metodo === 'GET' && $recurso === 'usuarios') {
     } else {
         $controller->obtenerTodos();
     }
+
+} elseif (
+    $metodo === 'POST' &&
+    $recurso === 'citas' &&
+    isset($_GET['accion']) &&
+    $_GET['accion'] === 'cancelar' &&
+    isset($_GET['id'])
+) {
+    $controller = new CitaController($conexion);
+    $controller->cancelar((int) $_GET['id']);
+
 } elseif ($metodo === 'POST' && $recurso === 'citas') {
     $controller = new CitaController($conexion);
     $controller->crear();

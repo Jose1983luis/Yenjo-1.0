@@ -97,7 +97,7 @@ VALUES
 (3, 'Estilista', 'YENJO', 'estilista@yenjo.local', '3000000003',
  '$2y$12$izvP19f4ZeJDPNpuRMF9sOJSNAii7pnkFjlyoWiketwKd5gd/eKkS',
  NOW(), 'Activo');
- 
+
  SELECT
     u.id_usuario,
     r.nombre_rol,
@@ -150,14 +150,14 @@ VALUES
 	INNER JOIN usuario u
 		ON d.id_estilista = u.id_usuario
 	ORDER BY d.id_disponibilidad;
-    
+
     INSERT INTO cita
 (id_cliente, id_estilista, id_servicio, fecha, hora, observaciones, estado)
 VALUES
 (2, 3, 1, '2026-09-28', '10:00:00',
  'Cita de prueba para validar el agendamiento de YENJO 1.0',
  'Programada');
- 
+
  SELECT
     c.id_cita,
     CONCAT(cli.nombre, ' ', cli.apellido) AS cliente,
@@ -275,7 +275,7 @@ ORDER BY p.id_pago;
 
 SELECT @@port, @@hostname, @@version;
 
-SELECT 
+SELECT
     id_usuario,
     id_rol,
     nombre,
@@ -307,3 +307,6 @@ USE yenjo_1_0;
 SELECT *
 FROM usuario
 WHERE id_usuario = 4;
+
+ALTER TABLE servicio
+ADD CONSTRAINT uq_servicio_nombre UNIQUE (nombre_servicio);

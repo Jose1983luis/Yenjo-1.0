@@ -49,6 +49,23 @@ class Disponibilidad
         return $resultado ?: null;
     }
 
+    public function esEstilista(int $idUsuario): bool
+    {
+        $sql = "SELECT COUNT(*)
+                FROM usuario u
+                INNER JOIN rol r ON r.id_rol = u.id_rol
+                WHERE u.id_usuario = :id_usuario
+                  AND r.nombre_rol = 'Estilista'
+                  AND u.estado = 'Activo'";
+
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute([
+            ':id_usuario' => $idUsuario
+        ]);
+
+        return (int) $consulta->fetchColumn() > 0;
+    }
+
     public function crear(
         int $idEstilista,
         string $diaSemana,
