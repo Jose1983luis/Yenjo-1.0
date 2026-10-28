@@ -105,6 +105,23 @@ class Cita
     return (int) $stmt->fetchColumn() > 0;
     }
 
+    public function esEstilistaValido(int $idEstilista): bool
+    {
+    $sql = "SELECT COUNT(*)
+            FROM usuario u
+            INNER JOIN rol r ON r.id_rol = u.id_rol
+            WHERE u.id_usuario = :id_estilista
+              AND r.nombre_rol = 'Estilista'
+              AND u.estado = 'Activo'";
+
+    $stmt = $this->conexion->prepare($sql);
+    $stmt->execute([
+        ':id_estilista' => $idEstilista
+    ]);
+
+    return (int) $stmt->fetchColumn() > 0;
+    }
+    
     public function cumpleHorarioDisponible(
     int $idEstilista,
     string $fecha,
@@ -235,7 +252,11 @@ public function tieneBloqueoHorario(
     public function crear(array $datos): bool
     {
         $idEstilista = (int) $datos['id_estilista'];
-
+        if (!$this->esEstilistaValido($idEstilista)) {
+    throw new DomainException(
+        'El usuario indicado como estilista no existe, no está activo o no tiene el rol Estilista.'
+    );
+}
         if (!$this->tieneDisponibilidadRegistrada($idEstilista)) {
             throw new DomainException(
                 'El estilista no tiene disponibilidad registrada.'
@@ -314,6 +335,11 @@ if ($this->tieneBloqueoHorario(
 public function actualizar(int $id, array $datos): bool
 {
     $idEstilista = (int) $datos['id_estilista'];
+    if (!$this->esEstilistaValido($idEstilista)) {
+    throw new DomainException(
+        'El usuario indicado como estilista no existe, no está activo o no tiene el rol Estilista.'
+    );
+}
     $idServicio = (int) $datos['id_servicio'];
 
     // RN-18: el estilista debe tener disponibilidad registrada.

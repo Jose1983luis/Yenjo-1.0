@@ -20,6 +20,37 @@ class Pago
         return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function obtenerPorCliente(int $idCliente): array
+{
+    $sql = "SELECT p.*
+            FROM {$this->tabla} p
+            INNER JOIN cita c ON c.id_cita = p.id_cita
+            WHERE c.id_cliente = :id_cliente
+            ORDER BY p.id_pago DESC";
+
+    $consulta = $this->conexion->prepare($sql);
+    $consulta->bindValue(':id_cliente', $idCliente, PDO::PARAM_INT);
+    $consulta->execute();
+
+    return $consulta->fetchAll(PDO::FETCH_ASSOC);
+}
+
+    public function obtenerPorIdCliente(int $idPago, int $idCliente): array|false
+{
+    $sql = "SELECT p.*
+            FROM {$this->tabla} p
+            INNER JOIN cita c ON c.id_cita = p.id_cita
+            WHERE p.id_pago = :id_pago
+              AND c.id_cliente = :id_cliente";
+
+    $consulta = $this->conexion->prepare($sql);
+    $consulta->bindValue(':id_pago', $idPago, PDO::PARAM_INT);
+    $consulta->bindValue(':id_cliente', $idCliente, PDO::PARAM_INT);
+    $consulta->execute();
+
+    return $consulta->fetch(PDO::FETCH_ASSOC);
+}
+
     public function obtenerPorId(int $id): array|false
     {
         $sql = "SELECT * FROM {$this->tabla} WHERE id_pago = :id";

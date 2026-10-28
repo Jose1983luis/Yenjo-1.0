@@ -12,34 +12,113 @@ class PagoController
         $this->pago = new Pago($conexion);
     }
 
-    public function obtenerTodos(): void
-    {
+   public function obtenerTodos(): void
+{
+    $usuario = $_SESSION['usuario'] ?? null;
+
+    if (!is_array($usuario) || !isset($usuario['id_usuario'])) {
+        http_response_code(401);
+        echo json_encode([
+            'estado' => false,
+            'mensaje' => 'Acceso no autorizado. Debe iniciar sesión.'
+        ]);
+        return;
+    }
+
+    $rol = $usuario['nombre_rol'] ?? '';
+
+    if ($rol === 'Administrador') {
         echo json_encode([
             'estado' => true,
             'datos' => $this->pago->obtenerTodos()
         ]);
+        return;
     }
 
-    public function obtenerPorId(int $id): void
-    {
-        $pago = $this->pago->obtenerPorId($id);
+    if ($rol === 'Cliente') {
+        $idCliente = (int) $usuario['id_usuario'];
 
-        if ($pago) {
-            echo json_encode([
-                'estado' => true,
-                'datos' => $pago
-            ]);
-        } else {
-            http_response_code(404);
-            echo json_encode([
-                'estado' => false,
-                'mensaje' => 'Pago no encontrado'
-            ]);
-        }
+        echo json_encode([
+            'estado' => true,
+            'datos' => $this->pago->obtenerPorCliente($idCliente)
+        ]);
+        return;
     }
+
+    http_response_code(403);
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'No tiene permisos para consultar pagos.'
+    ]);
+}
+
+    public function obtenerPorId($id): void
+{
+    $usuario = $_SESSION['usuario'] ?? null;
+
+    if (!is_array($usuario) || !isset($usuario['id_usuario'])) {
+        http_response_code(401);
+        echo json_encode([
+            'estado' => false,
+            'mensaje' => 'Acceso no autorizado. Debe iniciar sesión.'
+        ]);
+        return;
+    }
+
+    $rol = $usuario['nombre_rol'] ?? '';
+
+    if ($rol === 'Administrador') {
+        $pago = $this->pago->obtenerPorId((int) $id);
+    } elseif ($rol === 'Cliente') {
+        $pago = $this->pago->obtenerPorIdCliente(
+            (int) $id,
+            (int) $usuario['id_usuario']
+        );
+    } else {
+        http_response_code(403);
+        echo json_encode([
+            'estado' => false,
+            'mensaje' => 'No tiene permisos para consultar este pago.'
+        ]);
+        return;
+    }
+
+    if ($pago === false) {
+        http_response_code(404);
+        echo json_encode([
+            'estado' => false,
+            'mensaje' => 'Pago no encontrado.'
+        ]);
+        return;
+    }
+
+    echo json_encode([
+        'estado' => true,
+        'datos' => $pago
+    ]);
+}
 
     public function crear(): void
-    {
+    {   
+        $usuario = $_SESSION['usuario'] ?? null;
+
+if (!is_array($usuario) || !isset($usuario['id_usuario'])) {
+    http_response_code(401);
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'Acceso no autorizado. Debe iniciar sesión.'
+    ]);
+    return;
+}
+
+if (($usuario['nombre_rol'] ?? '') !== 'Administrador') {
+    http_response_code(403);
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'No tiene permisos para registrar pagos.'
+    ]);
+    return;
+}
         $datos = json_decode(file_get_contents('php://input'), true);
 
         if (
@@ -100,7 +179,26 @@ class PagoController
     }
 
     public function actualizar(int $id): void
-    {
+    {   
+        $usuario = $_SESSION['usuario'] ?? null;
+
+if (!is_array($usuario) || !isset($usuario['id_usuario'])) {
+    http_response_code(401);
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'Acceso no autorizado. Debe iniciar sesión.'
+    ]);
+    return;
+}
+
+if (($usuario['nombre_rol'] ?? '') !== 'Administrador') {
+    http_response_code(403);
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'No tiene permisos para actualizar pagos.'
+    ]);
+    return;
+}
         $datos = json_decode(file_get_contents('php://input'), true);
 
         if (
@@ -165,7 +263,26 @@ class PagoController
     }
 
     public function eliminar(int $id): void
-    {
+    {   
+        $usuario = $_SESSION['usuario'] ?? null;
+
+if (!is_array($usuario) || !isset($usuario['id_usuario'])) {
+    http_response_code(401);
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'Acceso no autorizado. Debe iniciar sesión.'
+    ]);
+    return;
+}
+
+if (($usuario['nombre_rol'] ?? '') !== 'Administrador') {
+    http_response_code(403);
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'No tiene permisos para eliminar pagos.'
+    ]);
+    return;
+}
         if ($this->pago->eliminar($id)) {
             echo json_encode([
                 'estado' => true,

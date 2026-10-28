@@ -58,6 +58,28 @@ if ($recurso === 'citas') {
     }
 }
 
+// Protección del módulo Pagos.
+if ($recurso === 'pagos') {
+    if (!AutenticacionMiddleware::verificarSesion()) {
+        exit;
+    }
+
+    $rolPago = $_SESSION['usuario']['nombre_rol'] ?? '';
+
+    if ($rolPago === 'Administrador') {
+        // El Administrador puede realizar todas las operaciones.
+    } elseif ($rolPago === 'Cliente' && $metodo === 'GET') {
+        // El Cliente solo puede consultar pagos.
+    } else {
+        http_response_code(403);
+        echo json_encode([
+            'estado' => false,
+            'mensaje' => 'No tiene permisos para realizar esta operación.'
+        ]);
+        exit;
+    }
+}
+
 if ($metodo === 'GET' && $recurso === 'usuarios') {
     $controller = new UsuarioController($conexion);
     if (isset($_GET['id'])) {
