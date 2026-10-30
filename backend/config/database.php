@@ -3,11 +3,11 @@
 $host = "localhost";
 $dbname = "yenjo_1_0";
 $username = "root";
-$password = "Yenniferyjose1*";
+$password = "";
 
 try {
     $conexion = new PDO(
-        "mysql:host=$host;port=3306;dbname=$dbname;charset=utf8mb4",
+        "mysql:host=$host;port=3307;dbname=$dbname;charset=utf8mb4",
         $username,
         $password
     );

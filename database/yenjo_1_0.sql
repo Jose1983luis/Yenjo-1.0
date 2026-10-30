@@ -1,4 +1,6 @@
-CREATE DATABASE yenjo_1_0;
+CREATE DATABASE IF NOT EXISTS yenjo_1_0
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
 
 USE yenjo_1_0;
 
@@ -97,20 +99,6 @@ VALUES
 (3, 'Estilista', 'YENJO', 'estilista@yenjo.local', '3000000003',
  '$2y$12$izvP19f4ZeJDPNpuRMF9sOJSNAii7pnkFjlyoWiketwKd5gd/eKkS',
  NOW(), 'Activo');
-
- SELECT
-    u.id_usuario,
-    r.nombre_rol,
-    u.nombre,
-    u.apellido,
-    u.correo_electronico,
-    u.telefono,
-    u.estado
-FROM usuario u
-INNER JOIN rol r
-    ON u.id_rol = r.id_rol
-ORDER BY u.id_usuario;
-
 INSERT INTO servicio
 (nombre_servicio, descripcion, precio, duracion, estado)
 VALUES
@@ -118,17 +106,6 @@ VALUES
 ('Pedicure', 'Servicio de pedicure para cuidado y arreglo de uñas de los pies', 45000.00, 75, 'Activo'),
 ('Tinte de cabello', 'Aplicación de tinte para cambio o renovación del color del cabello', 80000.00, 120, 'Activo'),
 ('Tratamiento de keratina', 'Tratamiento capilar de keratina para el cuidado y acondicionamiento del cabello', 120000.00, 150, 'Activo');
-
-SELECT
-    id_servicio,
-    nombre_servicio,
-    descripcion,
-    precio,
-    duracion,
-    estado
-FROM servicio
-ORDER BY id_servicio;
-
 INSERT INTO disponibilidad
 (id_estilista, dia_semana, hora_inicio, hora_fin, estado)
 VALUES
@@ -137,176 +114,15 @@ VALUES
 (3, 'Miércoles', '08:00:00', '17:00:00', 'Disponible'),
 (3, 'Jueves', '08:00:00', '17:00:00', 'Disponible'),
 (3, 'Viernes', '08:00:00', '17:00:00', 'Disponible');
-
-	SELECT
-		d.id_disponibilidad,
-		u.nombre,
-		u.apellido,
-		d.dia_semana,
-		d.hora_inicio,
-		d.hora_fin,
-		d.estado
-	FROM disponibilidad d
-	INNER JOIN usuario u
-		ON d.id_estilista = u.id_usuario
-	ORDER BY d.id_disponibilidad;
-
-    INSERT INTO cita
+INSERT INTO cita
 (id_cliente, id_estilista, id_servicio, fecha, hora, observaciones, estado)
 VALUES
 (2, 3, 1, '2026-09-28', '10:00:00',
  'Cita de prueba para validar el agendamiento de YENJO 1.0',
  'Programada');
-
- SELECT
-    c.id_cita,
-    CONCAT(cli.nombre, ' ', cli.apellido) AS cliente,
-    CONCAT(est.nombre, ' ', est.apellido) AS estilista,
-    s.nombre_servicio,
-    c.fecha,
-    c.hora,
-    c.estado
-FROM cita c
-INNER JOIN usuario cli
-    ON c.id_cliente = cli.id_usuario
-INNER JOIN usuario est
-    ON c.id_estilista = est.id_usuario
-INNER JOIN servicio s
-    ON c.id_servicio = s.id_servicio
-ORDER BY c.id_cita;
-
 INSERT INTO pago
 (id_cita, valor, fecha_pago, metodo_pago, estado)
 VALUES
 (1, 35000.00, '2026-09-28 10:00:00', 'Efectivo', 'Pagado');
-
-SELECT
-    p.id_pago,
-    p.id_cita,
-    CONCAT(u.nombre, ' ', u.apellido) AS cliente,
-    s.nombre_servicio,
-    p.valor,
-    p.fecha_pago,
-    p.metodo_pago,
-    p.estado
-FROM pago p
-INNER JOIN cita c
-    ON p.id_cita = c.id_cita
-INNER JOIN usuario u
-    ON c.id_cliente = u.id_usuario
-INNER JOIN servicio s
-    ON c.id_servicio = s.id_servicio
-ORDER BY p.id_pago;
-
-SELECT *
-FROM rol
-ORDER BY id_rol;
-
-SELECT
-    u.id_usuario,
-    r.nombre_rol,
-    u.nombre,
-    u.apellido,
-    u.correo_electronico,
-    u.telefono,
-    u.estado
-FROM usuario u
-INNER JOIN rol r
-    ON u.id_rol = r.id_rol
-ORDER BY u.id_usuario;
-
-SELECT
-    id_servicio,
-    nombre_servicio,
-    descripcion,
-    precio,
-    duracion,
-    estado
-FROM servicio
-ORDER BY id_servicio;
-
-SELECT
-    d.id_disponibilidad,
-    u.nombre,
-    u.apellido,
-    d.dia_semana,
-    d.hora_inicio,
-    d.hora_fin,
-    d.estado
-FROM disponibilidad d
-INNER JOIN usuario u
-    ON d.id_estilista = u.id_usuario
-ORDER BY d.id_disponibilidad;
-
-SELECT
-    c.id_cita,
-    CONCAT(cli.nombre, ' ', cli.apellido) AS cliente,
-    CONCAT(est.nombre, ' ', est.apellido) AS estilista,
-    s.nombre_servicio,
-    c.fecha,
-    c.hora,
-    c.estado
-FROM cita c
-INNER JOIN usuario cli
-    ON c.id_cliente = cli.id_usuario
-INNER JOIN usuario est
-    ON c.id_estilista = est.id_usuario
-INNER JOIN servicio s
-    ON c.id_servicio = s.id_servicio
-ORDER BY c.id_cita;
-
-SELECT
-    p.id_pago,
-    p.id_cita,
-    CONCAT(u.nombre, ' ', u.apellido) AS cliente,
-    s.nombre_servicio,
-    p.valor,
-    p.fecha_pago,
-    p.metodo_pago,
-    p.estado
-FROM pago p
-INNER JOIN cita c
-    ON p.id_cita = c.id_cita
-INNER JOIN usuario u
-    ON c.id_cliente = u.id_usuario
-INNER JOIN servicio s
-    ON c.id_servicio = s.id_servicio
-ORDER BY p.id_pago;
-
-SELECT @@port, @@hostname, @@version;
-
-SELECT
-    id_usuario,
-    id_rol,
-    nombre,
-    apellido,
-    correo_electronico,
-    telefono,
-    password_hash,
-    fecha_registro,
-    estado
-FROM usuario
-ORDER BY id_usuario DESC
-LIMIT 1;
-
-USE yenjo_1_0;
-
-SELECT
-    id_usuario,
-    id_rol,
-    nombre,
-    apellido,
-    correo_electronico,
-    telefono,
-    estado
-FROM usuario
-WHERE id_usuario = 4;
-
-USE yenjo_1_0;
-
-SELECT *
-FROM usuario
-WHERE id_usuario = 4;
-
 ALTER TABLE servicio
 ADD CONSTRAINT uq_servicio_nombre UNIQUE (nombre_servicio);
