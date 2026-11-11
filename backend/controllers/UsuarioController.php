@@ -89,16 +89,47 @@ class UsuarioController
         $fechaRegistro = date('Y-m-d H:i:s');
         $estado = 'Activo';
 
-        $resultado = $this->usuario->crear(
-            $idRol,
-            $datos['nombre'],
-            $datos['apellido'],
-            $datos['correo'],
-            $datos['telefono'],
-            $passwordHash,
-            $fechaRegistro,
-            $estado
-        );
+        try {
+
+    $resultado = $this->usuario->crear(
+        $idRol,
+        $datos['nombre'],
+        $datos['apellido'],
+        $datos['correo'],
+        $datos['telefono'],
+        $passwordHash,
+        $fechaRegistro,
+        $estado
+    );
+
+} catch (PDOException $error) {
+
+    // Correo electrónico duplicado.
+    if (
+        $error->getCode() === '23000' &&
+        isset($error->errorInfo[1]) &&
+        $error->errorInfo[1] === 1062
+    ) {
+        http_response_code(409);
+
+        echo json_encode([
+            'estado' => false,
+            'mensaje' => 'El correo electrónico ya se encuentra registrado.'
+        ]);
+
+        return;
+    }
+
+    // Otros errores de base de datos.
+    http_response_code(500);
+
+    echo json_encode([
+        'estado' => false,
+        'mensaje' => 'Ocurrió un error al registrar el usuario.'
+    ]);
+
+    return;
+}
 
         if ($resultado) {
             http_response_code(201);

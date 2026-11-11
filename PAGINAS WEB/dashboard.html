@@ -89,7 +89,7 @@
 
     <!-- Botón cerrar sesión -->
     <div class="mt-5">
-      <a href="galeria.html" class="btn btn-primary w-50">
+      <a href="#" id="btnCerrarSesion" class="btn btn-primary w-50">
         <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
       </a>
     </div>
@@ -103,6 +103,47 @@
 
 <!-- Capa centralizada de comunicación con la API -->
 <script src="../js/api.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
 
+  const botonCerrarSesion = document.getElementById('btnCerrarSesion');
+
+  botonCerrarSesion.addEventListener('click', async function (evento) {
+
+    evento.preventDefault();
+
+    botonCerrarSesion.style.pointerEvents = 'none';
+    botonCerrarSesion.innerHTML =
+      '<i class="bi bi-hourglass-split me-2"></i> Cerrando sesión...';
+
+    try {
+
+      const respuesta = await apiRequest('auth', {
+        metodo: 'POST',
+        parametros: {
+          accion: 'logout'
+        }
+      });
+
+      if (respuesta.estado === true) {
+        window.location.href = 'login.html';
+      } else {
+        throw new Error(respuesta.mensaje || 'No fue posible cerrar la sesión.');
+      }
+
+    } catch (error) {
+
+      alert(error.message || 'Ocurrió un error al cerrar la sesión.');
+
+      botonCerrarSesion.style.pointerEvents = 'auto';
+      botonCerrarSesion.innerHTML =
+        '<i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión';
+
+    }
+
+  });
+
+});
+</script>
 </body>
 </html>
